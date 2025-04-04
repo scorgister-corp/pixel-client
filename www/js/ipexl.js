@@ -21,7 +21,7 @@ var GC = undefined;
 var zoomFactor = 1;
 
 function load() {
-    socket = new WebSocket("ws://api.ipexl.scorgister.net");
+    socket = new WebSocket("wss://api.ipexl.scorgister.net");
     socket.onmessage = (data) => {
         onMessage(JSON.parse(data.data));
     };
