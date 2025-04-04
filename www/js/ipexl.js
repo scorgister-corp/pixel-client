@@ -21,7 +21,7 @@ var GC = undefined;
 var zoomFactor = 1;
 
 function load() {
-    socket = new WebSocket("ws://localhost:8800");
+    socket = new WebSocket("ws://api.ipexl.scorgister.net");
     socket.onmessage = (data) => {
         onMessage(JSON.parse(data.data));
     };
@@ -160,7 +160,7 @@ function highlightCase(x, y, color) {
 }
 
 function clearHighlight(x, y) {
-    if(x == -1 || y == -1)
+    if(x == -1 || y == -1 || y >= PIXELS.length || x >= PIXELS[0].length)
         return;
 
     GC.fillStyle = getColor(PIXELS[y][x]);
