@@ -18,10 +18,15 @@ var PIXELS = [];
 
 var GC = undefined;
 
-var zoomFactor = 1;
+//var zoomFactor = 1;
+
+var TOOLS = {MOVE: 0, PLACE: 1};
+var TOOL = TOOLS.MOVE;
 
 function load() {
-    socket = new WebSocket("wss://api.ipexl.scorgister.net");
+    //socket = new WebSocket("wss://api.ipexl.scorgister.net");
+    socket = new WebSocket("ws://localhost:8100");
+    //socket = new WebSocket("ws://172.20.10.2:8100");
     socket.onmessage = (data) => {
         onMessage(JSON.parse(data.data));
     };
@@ -98,7 +103,8 @@ function placePixel(x, y, color, updateServer=true) {
 
 function onMouseDown(e) {
     let x = Math.floor(e.offsetX / WIDTH_CELL), y = Math.floor(e.offsetY / HEIGHT_CELL);
-    placePixel(x, y, getSelectedColor());    
+    //if()
+    //placePixel(x, y, getSelectedColor());    
 }
 
 function onMouseMove(e) {
@@ -227,6 +233,25 @@ function onMessage(data) {
         case TYPES.PLACE:
             placeOtherPixels(data)
             break;
+    }
+    
+}
+
+function toolsClick(e) {
+    for(let ch of e.parentElement.children) {
+        if(ch != e)
+            ch.setAttribute("class", "tool");
+        else
+            e.setAttribute("class", "tool tool-selected");
+    }
+
+    switch(e.id) {
+        case "move":
+            TOOL = TOOLS.MOVE;
+            break;
+        case "place":
+            TOOL = TOOLS.PLACE;
+            break
     }
     
 }

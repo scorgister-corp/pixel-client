@@ -2,22 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no">    
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/ipexl.js"></script>
+    <!--<script src="js/konva.min.js"></script>-->
+    
+    <!--<script defer src="js/ipexl.js"></script>-->
     <title>iPexl place</title>
 </head>
 <body>
     <header>
-        <h1 id="title">iPexl place</h1>
+        <img id="logo" src="img/logo.png" width="60" height="60">
     </header>
-    <div>
+    <div id="body">
         <div id="color-container">
 
         </div>
-        <span>x: <span id="x-coord">0</span>, y: <span id="y-coord">0</span></span>
-        <div id="canvas-container">
+        <!--<span>x: <span id="x-coord">0</span>, y: <span id="y-coord">0</span></span>-->
+        <div id="main">
+            <div id="tools">
+                <!--<div id="move" class="tool tool-selected" onclick="toolsClick(this)">M</div>
+                <div id="place" class="tool" onclick="toolsClick(this)">P</div>
+                <div class="tool-space"></div>-->
+                <div class="tool" id="zoom-in">+</div>
+                <div class="tool" id="zoom-out">-</div>
+            </div>
+            <div id="canvas-container">
+                <canvas id="viewport-canvas"></canvas>
+            </div>
         </div>
     </div>
+    <script src="js/glwindow.js"></script>
+    <script src="js/place.js"></script>
+    <script  src="js/main.js"></script>
+    <script>
+        main();
+    </script>
 </body>
 </html>

@@ -1,16 +1,31 @@
-
-#canvas-container {
-    max-width: 100%;
-    max-height: 80vh;
-    overflow: auto;
-    border: 1px solid black;
-
-    padding: 20px;
+* {
+	padding: 0;
+	margin: 0;
+	font-family: monospace;
 }
 
-#main-canvas {
-    border: 1px solid black;
+body {
+	overflow: hidden;
+	position: fixed;
+	-webkit-overflow-scrolling: touch;
+    background-color: #f1f1f1;
+}
 
+header {
+    text-align: center;
+}
+
+#logo {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    image-rendering: pixelated;
+}
+
+#viewport-canvas {
+    image-rendering: pixelated;
+	width: 100vw;
+	height: 90vh;
+	background-color: #e0e0e0;
 }
 
 #title {
@@ -20,7 +35,7 @@
 #color-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -28,7 +43,7 @@
     width: 20px;
     height: 20px;
 
-    margin: 6px;
+    margin: 10px;
     border: 2px solid black;
     transition: 0.25s;
 }
@@ -36,6 +51,54 @@
 .selected {
     width: 30px;
     height: 30px;
-    margin: 3px;
+    margin: 5px;
+}
 
+#main {
+    display: flex;
+    flex-direction: row;
+
+}
+
+#tools {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.tool-space {
+    width: 40px;
+    height: 40px;
+
+    margin: 10px;
+}
+
+.tool {
+    width: 40px;
+    height : 40px;
+    border: solid 1px black;
+
+    text-align: center;
+
+    margin: 10px;
+}
+
+.tool-selected {
+    background-color: black;
+    color: white;
+}
+
+@media (max-width: 1000px) {
+
+    #tools {
+        flex-direction: row;
+    }
+
+    #main {
+        flex-direction: column;
+    }
+    
 }
