@@ -36,9 +36,9 @@ class Place {
 			wsProt = "ws:";
 		}*/
 
-		this.#connect("ws://localhost:8100");
+		//this.#connect("ws://localhost:8100");
 		//this.#connect("ws://192.168.0.13:8100");
-		//this.#connect("wss://api.ipexl.scorgister.net");
+		this.#connect("wss://api.ipexl.scorgister.net");
 		//this.#loadingp.innerHTML = "downloading canvas";
 
 		/*fetch(window.location.protocol + "//" + host + "/place.png")
