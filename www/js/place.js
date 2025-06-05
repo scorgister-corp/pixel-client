@@ -1,3 +1,5 @@
+const PING_INTERVAL = 30000;
+
 class Place {
 	#loaded;
 	#socket;
@@ -8,7 +10,7 @@ class Place {
 	#colors;
 	#pixels;
 
-	static TYPES = {LOGIN: 0, PLACE: 1};
+	static TYPES = {LOGIN: 0, PLACE: 1, PING: -1};
 	static BACKGROUND_COLOR = "#ffffff";
 
 	constructor(glWindow) {
@@ -163,8 +165,11 @@ class Place {
 		this.#socket.addEventListener("message", socketMessage);
 		this.#socket.addEventListener("close", socketClose);
 		this.#socket.addEventListener("error", socketError);
-	}
-
+		
+		setInterval(() => {
+			this.send({type: Place.TYPES.PING});			
+		}, PING_INTERVAL);
+	}	
 	setPixel(x, y, colorIndex, updateServer = true, drawCanvas=true) {
 		x = Math.floor(x)
 		y = Math.floor(y);
